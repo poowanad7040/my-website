@@ -9,20 +9,12 @@
 <body>
   <div class="container">
     <h1>สุ่มตัวเลข 1-100</h1>
-    <p>กรุณากรอกชื่อและคลิก "สุ่มตัวเลข" เพื่อเริ่มเกม:</p>
-
-    <div class="input-container">
-      <input type="text" id="playerName" placeholder="กรอกชื่อของคุณ" required>
-      <button id="generateNumber" class="btn">สุ่มตัวเลข</button>
-    </div>
-
-    <div class="result-container">
-      <div id="result" class="result">กรุณากรอกชื่อและกดสุ่ม</div>
-    </div>
-
-    <button id="resetButton" class="reset-btn">รีเซ็ตข้อมูล</button>
+    <p>กรุณากรอกชื่อเพื่อเริ่มเกม:</p>
+    <input type="text" id="playerName" placeholder="กรอกชื่อของคุณ" required>
+    <button id="generateNumber">สุ่มตัวเลข</button>
+    <div id="result" class="result">กรุณากรอกชื่อและกดสุ่ม</div>
+    <button id="resetButton" class="reset-button">รีเซ็ตข้อมูล</button> <!-- ปุ่มรีเซ็ต -->
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
