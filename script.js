@@ -6,7 +6,7 @@ const resultDiv = document.getElementById('result');
 let usedNumbers = JSON.parse(localStorage.getItem('usedNumbers')) || []; // เก็บข้อมูลที่ใช้ไปแล้ว
 let players = JSON.parse(localStorage.getItem('players')) || {}; // เก็บข้อมูลผู้เล่น
 
-// กำหนดชื่อ admin
+// กำหนดชื่อ admin ใหม่
 const adminName = "Torakakung7040"; // เปลี่ยนรหัสสำหรับ admin
 
 // ฟังก์ชันสุ่มเลข
