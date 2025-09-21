@@ -2,12 +2,10 @@ const generateButton = document.getElementById('generateNumber');
 const resetButton = document.getElementById('resetButton');
 const playerNameInput = document.getElementById('playerName');
 const resultDiv = document.getElementById('result');
+const playersListDiv = document.getElementById('playersList'); // ส่วนแสดงข้อมูลผู้เล่น
 
 let usedNumbers = JSON.parse(localStorage.getItem('usedNumbers')) || []; // เก็บข้อมูลที่ใช้ไปแล้ว
 let players = JSON.parse(localStorage.getItem('players')) || {}; // เก็บข้อมูลผู้เล่น
-
-// กำหนดชื่อ admin
-const adminName = "Torakakung7040"; // เปลี่ยนรหัสสำหรับ admin
 
 // ฟังก์ชันสุ่มเลข
 generateButton.addEventListener('click', () => {
@@ -40,23 +38,34 @@ generateButton.addEventListener('click', () => {
 
   // แสดงผลลัพธ์
   resultDiv.textContent = `${playerName} ได้หมายเลข: ${randomNum}`;
+
+  // แสดงข้อมูลของผู้เล่นทั้งหมด
+  showPlayersList();
 });
+
+// ฟังก์ชันแสดงข้อมูลของผู้เล่นทั้งหมด
+function showPlayersList() {
+  const playersData = JSON.parse(localStorage.getItem('players')) || {};
+  let playersHTML = '<ul>';
+
+  for (const [name, number] of Object.entries(playersData)) {
+    playersHTML += `<li>${name} ได้หมายเลข ${number}</li>`;
+  }
+
+  playersHTML += '</ul>';
+  playersListDiv.innerHTML = playersHTML;
+}
 
 // ฟังก์ชันรีเซ็ต
 resetButton.addEventListener('click', () => {
-  // ขอรหัสผ่านสำหรับรีเซ็ตข้อมูล
-  const password = prompt("กรุณากรอกรหัสสำหรับรีเซ็ตข้อมูล:");
-
-  // ตรวจสอบว่าผู้ใช้งานกรอกรหัสถูกต้องหรือไม่
-  if (password === adminName) {
-    // ล้างข้อมูลทั้งหมด
-    usedNumbers = [];
-    players = {};
-    localStorage.removeItem('usedNumbers'); // ลบข้อมูลใน localStorage
-    localStorage.removeItem('players'); // ลบข้อมูลใน localStorage
-    resultDiv.textContent = 'กรุณากรอกชื่อและกดสุ่ม';
-    alert("ข้อมูลถูกรีเซ็ตแล้ว!");
-  } else {
-    alert("รหัสไม่ถูกต้อง! ไม่สามารถรีเซ็ตข้อมูลได้");
-  }
+  // ล้างข้อมูลทั้งหมด
+  usedNumbers = [];
+  players = {};
+  localStorage.removeItem('usedNumbers'); // ลบข้อมูลใน localStorage
+  localStorage.removeItem('players'); // ลบข้อมูลใน localStorage
+  resultDiv.textContent = 'กรุณากรอกชื่อและกดสุ่ม';
+  showPlayersList(); // แสดงข้อมูลที่เก็บไว้หลังรีเซ็ต
 });
+
+// เรียกฟังก์ชันเพื่อแสดงข้อมูลผู้เล่นเมื่อโหลดหน้า
+showPlayersList();
