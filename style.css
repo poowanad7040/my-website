@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(to right, #ff7e5f, #feb47b); /* กำหนดสีพื้นหลังไล่ระดับ */
+  background: linear-gradient(to right, #00c6ff, #0072ff); /* ไล่สีจากน้ำเงินฟ้า */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,77 +15,104 @@ body {
   padding: 20px;
 }
 
-/* กล่องที่ใช้เก็บเนื้อหาทั้งหมด */
 .container {
-  text-align: center;
   background-color: #ffffff;
-  padding: 40px 60px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  transition: transform 0.3s ease-in-out; /* การเคลื่อนไหวเมื่อ hover */
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
 }
 
-.container:hover {
-  transform: scale(1.05); /* ขยายขนาดเล็กน้อยเมื่อ hover */
-}
-
-/* หัวข้อ */
 h1 {
   font-size: 28px;
   color: #333;
   margin-bottom: 20px;
   font-weight: 600;
-  background: -webkit-linear-gradient(#ff6a00, #ee0979); /* สีไล่จากส้มไปแดง */
-  -webkit-background-clip: text;
-  color: transparent;
 }
 
-/* ข้อความแนะนำ */
 p {
   font-size: 16px;
-  color: #fff;
-  margin-bottom: 20px;
+  color: #666;
+  margin-bottom: 30px;
 }
 
-/* ปุ่มสุ่มตัวเลข */
-button {
-  background: linear-gradient(to right, #6a11cb, #2575fc); /* สีไล่ระดับจากม่วงไปฟ้า */
-  color: white;
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+#playerName {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  width: 70%;
+}
+
+#generateNumber {
   padding: 12px 20px;
-  font-size: 18px;
+  background-color: #28a745;
+  color: white;
+  font-size: 16px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  margin: 10px 0;
-  width: 100%;
+  transition: background-color 0.3s ease;
+  margin-left: 10px;
 }
 
-button:hover {
-  background: linear-gradient(to right, #2575fc, #6a11cb); /* กลับสีเมื่อ hover */
-  transform: translateY(-5px); /* ยกปุ่มขึ้นเล็กน้อยเมื่อ hover */
+#generateNumber:hover {
+  background-color: #218838;
 }
 
-/* การแสดงผลลัพธ์ */
+.result-container {
+  margin-top: 20px;
+}
+
 .result {
   font-size: 24px;
   font-weight: bold;
   color: #333;
-  margin: 30px 0;
-  padding: 10px 0;
-  background-color: #fffae5; /* สีพื้นหลังผลลัพธ์ */
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
 }
 
-/* ปุ่มรีเซ็ต */
-.reset-button {
-  background-color: #f44336;
+.reset-btn {
+  padding: 12px 20px;
+  background-color: #dc3545;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: 20px;
+  width: 100%;
 }
 
-.reset-button:hover {
-  background-color: #e53935;
-  transform: translateY(-5px); /* ยกปุ่มขึ้นเล็กน้อยเมื่อ hover */
+.reset-btn:hover {
+  background-color: #c82333;
+}
+
+/* ทำให้ UI รองรับการใช้งานบนมือถือ */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  #generateNumber {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .input-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
