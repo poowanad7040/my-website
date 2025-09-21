@@ -3,11 +3,11 @@ const resetButton = document.getElementById('resetButton');
 const playerNameInput = document.getElementById('playerName');
 const resultDiv = document.getElementById('result');
 
-let usedNumbers = JSON.parse(localStorage.getItem('usedNumbers')) || []; // เก็บข้อมูลที่ใช้ไปแล้ว
-let players = JSON.parse(localStorage.getItem('players')) || {}; // เก็บข้อมูลผู้เล่น
+let usedNumbers = []; // เก็บข้อมูลที่ใช้ไปแล้ว
+let players = {}; // เก็บข้อมูลผู้เล่น
 
-// กำหนดชื่อ admin ใหม่
-const adminName = "Torakakung7040"; // เปลี่ยนรหัสสำหรับ admin
+// กำหนดชื่อ admin
+const adminName = "Torakakung7040"; // รหัส admin
 
 // ฟังก์ชันสุ่มเลข
 generateButton.addEventListener('click', () => {
@@ -34,10 +34,6 @@ generateButton.addEventListener('click', () => {
   usedNumbers.push(randomNum);
   players[playerName] = randomNum; // บันทึกหมายเลขที่สุ่มให้ผู้เล่น
 
-  // บันทึกข้อมูลใน localStorage
-  localStorage.setItem('usedNumbers', JSON.stringify(usedNumbers));
-  localStorage.setItem('players', JSON.stringify(players));
-
   // แสดงผลลัพธ์
   resultDiv.textContent = `${playerName} ได้หมายเลข: ${randomNum}`;
 });
@@ -52,8 +48,6 @@ resetButton.addEventListener('click', () => {
     // ล้างข้อมูลทั้งหมด
     usedNumbers = [];
     players = {};
-    localStorage.removeItem('usedNumbers'); // ลบข้อมูลใน localStorage
-    localStorage.removeItem('players'); // ลบข้อมูลใน localStorage
     resultDiv.textContent = 'กรุณากรอกชื่อและกดสุ่ม';
     alert("ข้อมูลถูกรีเซ็ตแล้ว!");
   } else {
